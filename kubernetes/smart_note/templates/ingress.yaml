@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ include "smart_note.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - hosts:
+      - {{ .Values.web.host }}
+      - www.{{ .Values.web.host }}
+      secretName: {{ include "smart_note.fullname" . }}
+  rules:
+  - host: {{ .Values.web.host }}
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ include "smart_note.fullname" . }}
+            servicePort: phoenix
+  - host: www.{{ .Values.web.host }}
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ include "smart_note.fullname" . }}
+            servicePort: phoenix

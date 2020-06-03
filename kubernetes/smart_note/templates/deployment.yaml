@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "smart_note.fullname" . }}
+  labels:
+    {{- include "smart_note.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "smart_note.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "smart_note.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secrets.webConfig }}
+          ports:
+            - name: phoenix
+              containerPort: 4000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /_health
+              port: phoenix
+          readinessProbe:
+            httpGet:
+              path: /_health
+              port: phoenix
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

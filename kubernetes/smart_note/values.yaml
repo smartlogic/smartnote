@@ -1,0 +1,15 @@
+imagePullSecrets:
+  - name: regcred
+
+image:
+  repository: oestrich/smart_note
+  # tag:
+  pullPolicy: IfNotPresent
+
+web:
+  host: "smartnote.dev"
+
+secrets:
+  webConfig: "smartnote-config"
+
+resources: {}
