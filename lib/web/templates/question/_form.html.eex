@@ -1,0 +1,29 @@
+<%= form_for(@changeset, @url, fn f -> %>
+  <div class="flex justify-center w-full flex-wrap bg-white shadow-md rounded px-8 py-6 mb-4">
+    <div class="w-full">
+      <div class="mb-6">
+        <%= text_input(f, :title, class: "input", placeholder: "Title") %>
+        <%= error_tag(f, :title) %>
+      </div>
+
+      <%= text_input(f, :tags, class: "input", placeholder: "Tags", value: tags_value(@changeset)) %>
+      <%= error_tag(f, :tags) %>
+    </div>
+  </div>
+
+  <div class="flex w-full flex-wrap bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
+    <div class="w-1/2 pr-4">
+      <%= label(f, :body, "Full Question", class: "label") %>
+      <%= textarea(f, :body, class: "input font-mono", rows: 30) %>
+    </div>
+
+    <div class="w-1/2 pl-4">
+      <%= label(f, :answer, class: "label") %>
+      <%= textarea(f, :answer, class: "input font-mono", rows: 30) %>
+    </div>
+  </div>
+
+  <div class="w-full bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
+    <%= submit(@submit, class: "btn-primary w-full") %>
+  </div>
+<% end) %>

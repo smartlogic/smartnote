@@ -3,11 +3,16 @@
 // its own CSS file.
 import "../css/app.scss";
 
-import 'jquery';
+import "jquery";
 
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/brands";
 
 import "phoenix_html";
+
+import Prism from "prismjs";
+import "prism-solarized-dark/prism-solarizeddark.css";
+
+Prism.highlightAll();

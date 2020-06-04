@@ -1,0 +1,22 @@
+<div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
+  <div class="flex w-full content-center justify-between">
+    <span class="text-4xl"><%= @question.title %></span>
+    <%= link(to: Routes.question_path(@conn, :edit, @question.id), class: "text-teal-500 font-bold my-auto") do %>
+      <i class="fa fa-edit"></i> Edit
+    <% end %>
+  </div>
+
+  <%= tags(@question) %>
+
+  <div class="flex">
+    <div class="w-1/2 mr-4">
+      <p class="text-xl font-bold pt-4">Question</p>
+      <%= markdown(@question.body) %>
+    </div>
+
+    <div class="w-1/2 ml-4">
+      <p class="text-xl font-bold pt-4">Answer</p>
+      <%= markdown(@question.answer) %>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,8 @@
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "popper.js": "^1.16.0",
+    "prism-solarized-dark": "^1.0.1",
+    "prismjs": "^1.20.0",
     "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
@@ -22,6 +24,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "babel-loader": "^8.0.0",
+    "babel-plugin-prismjs": "^2.0.1",
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "^0.28.10",
     "file-loader": "^4.2.0",

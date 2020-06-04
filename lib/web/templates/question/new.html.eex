@@ -1,0 +1,1 @@
+<%= render("_form.html", changeset: @changeset, url: Routes.question_path(@conn, :create), submit: "Add") %>

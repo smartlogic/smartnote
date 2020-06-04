@@ -35,6 +35,7 @@ defmodule SmartNote.MixProject do
     [
       {:bamboo, "~> 1.3"},
       {:credo, "~> 1.1", only: [:dev, :test]},
+      {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
