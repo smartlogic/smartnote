@@ -11,7 +11,7 @@ defmodule Web.Plugs.EnsureUserTest do
         conn
         |> assign(:current_user, user)
         |> bypass_through()
-        |> get("/profile")
+        |> get("/questions/1")
         |> EnsureUser.call([])
 
       refute conn.halted
@@ -21,7 +21,7 @@ defmodule Web.Plugs.EnsureUserTest do
       conn =
         conn
         |> bypass_through(Web.Router, [:browser])
-        |> get("/profile")
+        |> get("/questions/1")
         |> EnsureUser.call([])
 
       assert conn.halted

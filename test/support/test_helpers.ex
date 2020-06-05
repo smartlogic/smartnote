@@ -10,14 +10,15 @@ defmodule SmartNote.TestHelpers do
       Map.merge(
         %{
           email: "user@example.com",
-          first_name: "John",
-          last_name: "Smith",
-          password: "password",
-          password_confirmation: "password"
+          name: "John Smith"
         },
         params
       )
 
-    Users.create(params)
+    Users.from_social(%{
+      provider: :github,
+      uid: 1,
+      info: params
+    })
   end
 end
