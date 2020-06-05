@@ -21,3 +21,8 @@ config :phoenix, :logger, false
 config :porcelain, driver: Porcelain.Driver.Basic
 
 config :stein_phoenix, :views, error_helpers: Web.ErrorHelpers
+
+config :ueberauth, Ueberauth,
+  providers: [
+    github: {Ueberauth.Strategy.Github, []}
+  ]

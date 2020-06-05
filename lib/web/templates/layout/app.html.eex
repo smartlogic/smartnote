@@ -41,17 +41,11 @@
                 <% end %>
               </li>
               <li class="mr-3">
-                <%= link("Profile", to: Routes.profile_path(@conn, :show), class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") %>
-              </li>
-              <li class="mr-3">
                 <%= link("Sign Out", to: Routes.session_path(@conn, :delete), method: :delete, class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") %>
               </li>
             <% else %>
               <li class="mr-3">
-                <%= link("Register", to: Routes.registration_path(@conn, :new), class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") %>
-              </li>
-              <li class="mr-3">
-                <%= link("Sign In", to: Routes.session_path(@conn, :new), class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") %>
+                <%= link("Sign In", to: Routes.auth_path(@conn, :request, "github"), class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") %>
               </li>
             <% end %>
           </ul>

@@ -7,7 +7,21 @@ defmodule SmartNote.Config do
   alias Vapor.Provider.Env
 
   @doc false
-  def application(), do: []
+  def application() do
+    Vapor.load!(application_providers())
+  end
+
+  defp application_providers() do
+    [
+      %Dotenv{},
+      %Env{
+        bindings: [
+          {:github_client_id, "GITHUB_CLIENT_ID"},
+          {:github_client_secret, "GITHUB_CLIENT_SECRET"}
+        ]
+      }
+    ]
+  end
 
   @doc """
   Load and parse database configuration

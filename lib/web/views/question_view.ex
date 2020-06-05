@@ -25,7 +25,8 @@ defmodule Web.QuestionView do
     end
   end
 
-  def render("libraries.html", %{question: %{libraries: libraries}}) when is_nil(libraries) or libraries == "" do
+  def render("libraries.html", %{question: %{libraries: libraries}})
+      when is_nil(libraries) or libraries == "" do
     nil
   end
 
@@ -49,12 +50,18 @@ defmodule Web.QuestionView do
     case repository do
       "hex" ->
         content_tag(:li) do
-          link("#{library} #{version}", to: "https://hex.pm/packages/#{library}", class: "text-blue-500")
+          link("#{library} #{version}",
+            to: "https://hex.pm/packages/#{library}",
+            class: "text-blue-500"
+          )
         end
 
       "npm" ->
         content_tag(:li) do
-          link("#{library} #{version}", to: "https://www.npmjs.com/packages/#{library}", class: "text-blue-500")
+          link("#{library} #{version}",
+            to: "https://www.npmjs.com/packages/#{library}",
+            class: "text-blue-500"
+          )
         end
     end
   end

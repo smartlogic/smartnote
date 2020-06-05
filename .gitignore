@@ -35,3 +35,6 @@ npm-debug.log
 
 /tmp/
 /uploads/
+
+/.env.dev
+/kubernetes/*-config.yml

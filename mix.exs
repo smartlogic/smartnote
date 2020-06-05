@@ -48,6 +48,8 @@ defmodule SmartNote.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:stein, "~> 0.5"},
+      {:ueberauth, "~> 0.6.3"},
+      {:ueberauth_github, "~> 0.7"},
       {:vapor, "~> 0.8.0"}
     ]
   end

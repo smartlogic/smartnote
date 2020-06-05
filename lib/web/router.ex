@@ -19,37 +19,21 @@ defmodule Web.Router do
   end
 
   scope "/", Web do
-    pipe_through :browser
+    pipe_through([:browser])
 
     get "/", PageController, :index
 
-    get("/sign-in", SessionController, :new)
-
-    post("/sign-in", SessionController, :create)
-
     delete("/sign-out", SessionController, :delete)
 
-    get("/register", RegistrationController, :new)
+    get("/auth/:provider", AuthController, :request)
 
-    post("/register", RegistrationController, :create)
-
-    get("/register/reset", RegistrationResetController, :new)
-
-    post("/register/reset", RegistrationResetController, :create)
-
-    get("/register/reset/verify", RegistrationResetController, :edit)
-
-    post("/register/reset/verify", RegistrationResetController, :update)
-
-    get("/users/confirm", ConfirmationController, :confirm)
+    get("/auth/:provider/callback", AuthController, :callback)
 
     get("/_health", PageController, :health)
   end
 
   scope "/", Web do
     pipe_through([:browser, :logged_in])
-
-    resources("/profile", ProfileController, singleton: true, only: [:show, :edit, :update])
 
     resources("/questions", QuestionController, except: [:index])
   end

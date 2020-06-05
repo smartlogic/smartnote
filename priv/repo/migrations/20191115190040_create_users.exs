@@ -4,19 +4,9 @@ defmodule SmartNote.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add(:email, :string, null: false)
-      add(:first_name, :string, null: false)
-      add(:last_name, :string, null: false)
-      add(:password_hash, :string, null: false)
+      add(:name, :string, null: false)
       add(:token, :uuid, null: false)
-
-      add(:email_verification_token, :uuid)
-      add(:email_verified_at, :utc_datetime)
-
-      add(:password_reset_token, :uuid)
-      add(:password_reset_expires_at, :utc_datetime)
-
-      add(:avatar_key, :uuid)
-      add(:avatar_extension, :string)
+      add(:github_uid, :string, null: false)
 
       timestamps()
     end
