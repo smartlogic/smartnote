@@ -31,6 +31,7 @@ RUN apk update && \
   apk add -U bash openssl imagemagick && \
   rm -rf /var/cache/apk/*
 WORKDIR /app
+ENV PATH=$PATH:/app/bin
 COPY --from=releaser /app/_build/prod/rel/smart_note /app/
 
 EXPOSE 4000
