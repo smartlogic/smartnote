@@ -24,4 +24,38 @@ defmodule Web.QuestionView do
         Enum.join(tags, ", ")
     end
   end
+
+  def render("libraries.html", %{question: %{libraries: libraries}}) when is_nil(libraries) or libraries == "" do
+    nil
+  end
+
+  def render("libraries.html", %{question: %{libraries: libraries}}) do
+    libraries = String.split(libraries, "\n")
+
+    content_tag(:div, class: "w-full") do
+      [
+        content_tag(:p, "Libraries", class: "text-xl"),
+        content_tag(:ul) do
+          render_many(libraries, __MODULE__, "library.html", as: :library)
+        end
+      ]
+    end
+  end
+
+  def render("library.html", %{library: library}) do
+    [repository | [library | version]] = String.split(library, " ")
+    version = Enum.join(version, " ")
+
+    case repository do
+      "hex" ->
+        content_tag(:li) do
+          link("#{library} #{version}", to: "https://hex.pm/packages/#{library}", class: "text-blue-500")
+        end
+
+      "npm" ->
+        content_tag(:li) do
+          link("#{library} #{version}", to: "https://www.npmjs.com/packages/#{library}", class: "text-blue-500")
+        end
+    end
+  end
 end

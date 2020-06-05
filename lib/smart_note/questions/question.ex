@@ -14,6 +14,7 @@ defmodule SmartNote.Questions.Question do
     field(:title, :string)
     field(:body, :string)
     field(:answer, :string)
+    field(:libraries, :string)
     field(:tags, {:array, :string})
 
     timestamps()
@@ -21,13 +22,13 @@ defmodule SmartNote.Questions.Question do
 
   def create_changeset(struct, params) do
     struct
-    |> cast(params, [:title, :body, :answer, :tags])
-    |> validate_required([:title, :body, :answer, :tags])
+    |> cast(params, [:title, :body, :answer, :libraries, :tags])
+    |> validate_required([:title, :body, :answer, :libraries, :tags])
   end
 
   def update_changeset(struct, params) do
     struct
-    |> cast(params, [:title, :body, :answer, :tags])
-    |> validate_required([:title, :body, :answer, :tags])
+    |> cast(params, [:title, :body, :answer, :libraries, :tags])
+    |> validate_required([:title, :body, :answer, :libraries, :tags])
   end
 end

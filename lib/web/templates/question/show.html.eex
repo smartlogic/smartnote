@@ -19,4 +19,6 @@
       <%= markdown(@question.answer) %>
     </div>
   </div>
+
+  <%= render("libraries.html", question: @question) %>
 </div>

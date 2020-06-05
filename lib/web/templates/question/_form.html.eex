@@ -1,14 +1,12 @@
 <%= form_for(@changeset, @url, fn f -> %>
-  <div class="flex justify-center w-full flex-wrap bg-white shadow-md rounded px-8 py-6 mb-4">
-    <div class="w-full">
-      <div class="mb-6">
-        <%= text_input(f, :title, class: "input", placeholder: "Title") %>
-        <%= error_tag(f, :title) %>
-      </div>
-
-      <%= text_input(f, :tags, class: "input", placeholder: "Tags", value: tags_value(@changeset)) %>
-      <%= error_tag(f, :tags) %>
+  <div class="w-full bg-white shadow-md rounded px-8 py-6 mb-4">
+    <div class="mb-6">
+      <%= text_input(f, :title, class: "input", placeholder: "Title") %>
+      <%= error_tag(f, :title) %>
     </div>
+
+    <%= text_input(f, :tags, class: "input", placeholder: "Tags", value: tags_value(@changeset)) %>
+    <%= error_tag(f, :tags) %>
   </div>
 
   <div class="flex w-full flex-wrap bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
@@ -21,6 +19,12 @@
       <%= label(f, :answer, class: "label") %>
       <%= textarea(f, :answer, class: "input font-mono", rows: 30) %>
     </div>
+  </div>
+
+  <div class="w-full bg-white shadow-md rounded px-8 py-6 mb-4">
+    <%= label(f, :libraries, class: "label") %>
+    <span>The format of this field is <code>repo package version</code> separated by newlines, e.g. <code>hex ecto ~&gt; 3.0</code></span>
+    <%= textarea(f, :libraries, class: "input font-mono", rows: 5) %>
   </div>
 
   <div class="w-full bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
