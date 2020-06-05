@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "smart_note.fullname" . }}
+  name: {{ include "smartnote.fullname" . }}
   labels:
-    {{- include "smart_note.labels" . | nindent 4 }}
+    {{- include "smartnote.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "smart_note.selectorLabels" . | nindent 6 }}
+      {{- include "smartnote.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "smart_note.selectorLabels" . | nindent 8 }}
+        {{- include "smartnote.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
