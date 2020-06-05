@@ -30,4 +30,12 @@
   @apply outline-none shadow-outline;
 }
 
+.markdown a {
+  @apply text-blue-500;
+}
+
+.markdown p {
+  @apply my-4;
+}
+
 @tailwind utilities;

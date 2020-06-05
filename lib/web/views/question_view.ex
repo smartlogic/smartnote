@@ -4,7 +4,9 @@ defmodule Web.QuestionView do
   def markdown(text) do
     {:ok, html, _} = Earmark.as_html(text, %Earmark.Options{code_class_prefix: "language-"})
 
-    raw(html)
+    content_tag(:div, class: "markdown") do
+      raw(html)
+    end
   end
 
   def tags(%{tags: tags}) do
