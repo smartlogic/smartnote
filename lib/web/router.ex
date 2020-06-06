@@ -36,6 +36,8 @@ defmodule Web.Router do
     pipe_through([:browser, :logged_in])
 
     resources("/questions", QuestionController, except: [:index])
+
+    resources("/tags", TagController, only: [:show])
   end
 
   if Mix.env() == :dev do

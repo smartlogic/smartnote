@@ -11,7 +11,11 @@ defmodule Web.QuestionView do
 
   def tags(%{tags: tags}) do
     content_tag(:p, class: "text-sm italic") do
-      Enum.join(tags, ", ")
+      tags
+      |> Enum.map(fn tag ->
+        link(tag, to: Routes.tag_path(Web.Endpoint, :show, tag), class: "inline")
+      end)
+      |> Enum.intersperse(", ")
     end
   end
 

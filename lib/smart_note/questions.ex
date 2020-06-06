@@ -3,6 +3,8 @@ defmodule SmartNote.Questions do
   Context for creating and managing common questions
   """
 
+  import Ecto.Query, except: [update: 2]
+
   alias SmartNote.Questions.Question
   alias SmartNote.Repo
   alias Stein.Pagination
@@ -12,10 +14,24 @@ defmodule SmartNote.Questions do
   def edit(question), do: question |> Question.update_changeset(%{})
 
   @doc """
+  Get all questions, paginated
   """
   def all(opts \\ []) do
     opts = Enum.into(opts, %{})
     Pagination.paginate(Repo, Question, opts)
+  end
+
+  @doc """
+  Get all questions with a specific tag, paginated
+  """
+  def with_tag(tag, opts \\ []) do
+    opts = Enum.into(opts, %{})
+
+    query =
+      Question
+      |> where([q], fragment("? = ANY(?)", ^tag, q.tags))
+
+    Pagination.paginate(Repo, query, opts)
   end
 
   @doc """

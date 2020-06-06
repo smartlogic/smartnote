@@ -9,7 +9,6 @@ defmodule Web.PageController do
     case Map.has_key?(conn.assigns, :current_user) do
       true ->
         %{page: page, per: per} = conn.assigns
-
         %{page: questions} = Questions.all(page: page, per: per)
 
         conn

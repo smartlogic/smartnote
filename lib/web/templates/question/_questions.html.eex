@@ -1,0 +1,12 @@
+<ul class="list-reset">
+  <%= Enum.map(@questions, fn question -> %>
+    <li class="border my-2">
+      <div class="w-full block p-4">
+      <%= link(to: Routes.question_path(@conn, :show, question.id)) do %>
+        <span class="text-xl"><%= question.title %></span>
+      <% end %>
+        <%= tags(question) %>
+      </div>
+    </li>
+  <% end) %>
+</ul>
