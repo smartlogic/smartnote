@@ -25,7 +25,7 @@ defmodule GitHub.Implementation do
   Get public organizations for a user based on a URL from the auth
   """
   def organizations(user) do
-    get(user["organization_url"])
+    get(user["organizations_url"])
     |> handle_request(fn json ->
       Enum.into(json, MapSet.new(), fn org ->
         org["login"]
