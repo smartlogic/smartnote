@@ -3,8 +3,16 @@ defmodule SmartNote.Config do
   Load configuration for the application
   """
 
+  alias SmartNote.Config.Cache
   alias Vapor.Provider.Dotenv
   alias Vapor.Provider.Env
+
+  def github_allowed_organizations() do
+    Cache.github_allowed_organizations()
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
+    |> Enum.into(MapSet.new())
+  end
 
   @doc false
   def application() do
@@ -16,6 +24,7 @@ defmodule SmartNote.Config do
       %Dotenv{},
       %Env{
         bindings: [
+          {:github_allowed_organizations, "GITHUB_ALLOWED_ORGANIZATIONS"},
           {:github_client_id, "GITHUB_CLIENT_ID"},
           {:github_client_secret, "GITHUB_CLIENT_SECRET"}
         ]
@@ -73,6 +82,9 @@ defmodule SmartNote.Config.Cache do
   use GenServer
 
   alias SmartNote.Config
+
+  def github_allowed_organizations(),
+    do: :persistent_term.get({__MODULE__, :github_allowed_organizations})
 
   @doc false
   def start_link(opts) do

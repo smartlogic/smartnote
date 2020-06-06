@@ -11,6 +11,8 @@ config :smart_note,
   namespace: Web,
   ecto_repos: [SmartNote.Repo]
 
+config :smart_note, :github, callback_module: GitHub.Implementation
+
 # Configures the endpoint
 config :smart_note, Web.Endpoint,
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],

@@ -10,6 +10,11 @@ defmodule SmartNote.UsersTest do
         Users.from_social(%{
           provider: :github,
           uid: 1,
+          extra: %{
+            raw_info: %{
+              user: %{}
+            }
+          },
           info: %{
             email: "user@example.com",
             name: "John User"

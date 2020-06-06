@@ -18,6 +18,11 @@ defmodule SmartNote.TestHelpers do
     Users.from_social(%{
       provider: :github,
       uid: 1,
+      extra: %{
+        raw_info: %{
+          user: %{}
+        }
+      },
       info: params
     })
   end

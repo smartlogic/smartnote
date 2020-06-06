@@ -3,6 +3,7 @@ defmodule SmartNote.Users do
   Users context
   """
 
+  alias SmartNote.Config
   alias SmartNote.Repo
   alias SmartNote.Users.User
 
@@ -41,6 +42,19 @@ defmodule SmartNote.Users do
   Create a new user based on social data
   """
   def from_social(auth = %{provider: :github}) do
+    {:ok, organizations} = GitHub.organizations(auth.extra.raw_info.user)
+    intersection = MapSet.intersection(organizations, Config.github_allowed_organizations())
+
+    case !Enum.empty?(intersection) do
+      true ->
+        create_user(auth)
+
+      false ->
+        {:error, :unauthorized}
+    end
+  end
+
+  defp create_user(auth) do
     attributes = %{
       github_uid: to_string(auth.uid),
       email: auth.info.email,

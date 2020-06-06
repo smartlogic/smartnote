@@ -12,6 +12,7 @@ defmodule SmartNote.Application do
 
     children = [
       SmartNote.Config.Cache,
+      {Finch, name: SmartNote.HTTPClient},
       SmartNote.Repo,
       Web.Endpoint
     ]
