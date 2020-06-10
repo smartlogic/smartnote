@@ -57,15 +57,14 @@ defmodule SmartNote.Users do
   defp create_user(auth) do
     attributes = %{
       github_uid: to_string(auth.uid),
-      email: auth.info.email,
-      name: auth.info.name
+      username: auth.info.nickname
     }
 
     %User{}
     |> User.create_changeset(attributes)
     |> Repo.insert(
-      conflict_target: {:unsafe_fragment, "(lower(email))"},
-      on_conflict: {:replace, [:github_uid]},
+      conflict_target: :github_uid,
+      on_conflict: {:replace, [:username]},
       returning: true
     )
   end

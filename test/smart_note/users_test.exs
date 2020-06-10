@@ -16,13 +16,11 @@ defmodule SmartNote.UsersTest do
             }
           },
           info: %{
-            email: "user@example.com",
-            name: "John User"
+            nickname: "smith"
           }
         })
 
-      assert user.email == "user@example.com"
-      assert user.name == "John User"
+      assert user.username == "smith"
     end
   end
 end

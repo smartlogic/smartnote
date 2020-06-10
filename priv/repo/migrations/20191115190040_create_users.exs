@@ -3,14 +3,13 @@ defmodule SmartNote.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add(:email, :string, null: false)
-      add(:name, :string, null: false)
+      add(:username, :string, null: false)
       add(:token, :uuid, null: false)
       add(:github_uid, :string, null: false)
 
       timestamps()
     end
 
-    create index(:users, ["lower(email)"], unique: true)
+    create index(:users, [:github_uid], unique: true)
   end
 end

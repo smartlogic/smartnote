@@ -9,8 +9,7 @@ defmodule SmartNote.TestHelpers do
     params =
       Map.merge(
         %{
-          email: "user@example.com",
-          name: "John Smith"
+          nickname: "smith"
         },
         params
       )
