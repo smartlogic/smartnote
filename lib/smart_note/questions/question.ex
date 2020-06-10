@@ -23,12 +23,12 @@ defmodule SmartNote.Questions.Question do
   def create_changeset(struct, params) do
     struct
     |> cast(params, [:title, :body, :answer, :libraries, :tags])
-    |> validate_required([:title, :body, :answer, :libraries, :tags])
+    |> validate_required([:title, :body, :answer, :tags])
   end
 
   def update_changeset(struct, params) do
     struct
     |> cast(params, [:title, :body, :answer, :libraries, :tags])
-    |> validate_required([:title, :body, :answer, :libraries, :tags])
+    |> validate_required([:title, :body, :answer, :tags])
   end
 end
