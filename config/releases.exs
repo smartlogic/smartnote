@@ -26,5 +26,5 @@ config :stein_phoenix, :views, error_helpers: Web.ErrorHelpers
 
 config :ueberauth, Ueberauth,
   providers: [
-    github: {Ueberauth.Strategy.Github, []}
+    github: {Ueberauth.Strategy.Github, [allow_private_emails: true]}
   ]

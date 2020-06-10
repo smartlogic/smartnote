@@ -28,7 +28,7 @@ config :phoenix, :json_library, Jason
 
 config :ueberauth, Ueberauth,
   providers: [
-    github: {Ueberauth.Strategy.Github, []}
+    github: {Ueberauth.Strategy.Github, [allow_private_emails: true]}
   ]
 
 if File.exists?("config/#{Mix.env()}.exs") do
