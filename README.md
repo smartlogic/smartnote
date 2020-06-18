@@ -2,6 +2,40 @@
 
 SmartNote is an app to track internal documentation, starting with FAQs around development.
 
+## Setup
+
+First install these:
+
+- [asdf](https://asdf-vm.com/#/)
+- [PostgreSQL 12](https://www.postgresql.org/)
+
+Once those are installed you can setup the application.
+
+```bash
+# This installs elixir/erlang/nodejs at the versions required
+asdf install
+
+# Install elixir dependencies
+mix deps.get
+mix compile
+
+# Install yarn and the rest of the javascript dependencies
+npm install -g yarn
+cd assets && yarn install && cd ..
+
+# Create the database and migrate for dev & test
+mix ecto.create
+mix ecto.migrate
+MIX_ENV=test mix ecto.migrate.reset
+
+# Make sure tests pass
+mix test
+
+# See `Local Development` below to configure `.env.dev`
+# Once complete, run the server
+mix phx.server
+```
+
 ## Local Development
 
 In order to run locally, you'll need a `.env.dev` file with the following filled in:
