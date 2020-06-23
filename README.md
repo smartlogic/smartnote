@@ -46,7 +46,7 @@ GITHUB_CLIENT_ID=...
 GITHUB_CLIENT_SECRET=...
 ```
 
-Create a GitHub OAuth application and copy the client id and secret. Make sure the authorized redirect uri is `http://localhost:4000/auth/github/callback`.
+[Create a GitHub OAuth application](https://github.com/settings/developers) and copy the client id and secret. Make sure the authorized redirect uri is `http://localhost:4000/auth/github/callback`.
 
 ## Kubernetes
 
