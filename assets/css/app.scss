@@ -46,4 +46,8 @@
   @apply mt-2;
 }
 
+.markdown h2 {
+  @apply text-2xl;
+}
+
 @tailwind utilities;
