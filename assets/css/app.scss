@@ -38,4 +38,12 @@
   @apply my-4;
 }
 
+.markdown ol {
+  @apply list-decimal list-inside;
+}
+
+.markdown ol li {
+  @apply mt-2;
+}
+
 @tailwind utilities;
