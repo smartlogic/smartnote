@@ -4,10 +4,37 @@ defmodule Web.QuestionController do
   alias SmartNote.Questions
 
   def show(conn, %{"id" => id}) do
-    with {:ok, question} <- Questions.get(id) do
-      conn
-      |> assign(:question, question)
-      |> render("show.html")
+    case Questions.get(id) do
+      {:ok, question} ->
+        case Map.has_key?(conn.assigns, :current_user) do
+          true ->
+            conn
+            |> assign(:question, question)
+            |> assign(:open_graph_title, question.title)
+            |> assign(:open_graph_description, "SmartNote is a FAQ site for SmartLogic")
+            |> assign(:open_graph_url, Routes.question_url(conn, :show, question.id))
+            |> render("show.html")
+
+          false ->
+            conn
+            |> assign(:question, question)
+            |> assign(:open_graph_title, question.title)
+            |> assign(:open_graph_description, "SmartNote is a FAQ site for SmartLogic")
+            |> assign(:open_graph_url, Routes.question_path(conn, :show, question.id))
+            |> render("simple.html")
+        end
+
+      {:error, :invalid_id} ->
+        conn
+        |> put_status(404)
+        |> put_view(Web.ErrorView)
+        |> render(:"404")
+
+      {:error, :not_found} ->
+        conn
+        |> put_status(404)
+        |> put_view(Web.ErrorView)
+        |> render(:"404")
     end
   end
 

@@ -1,0 +1,9 @@
+<div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
+  <div class="flex w-full content-center justify-between">
+    <span class="text-4xl"><%= @question.title %></span>
+  </div>
+
+  <p class="my-4">Please sign in to see more</p>
+
+  <%= link("Sign In", to: Routes.auth_path(@conn, :request, "github"), class: "btn-primary") %>
+</div>

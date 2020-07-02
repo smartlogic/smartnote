@@ -29,13 +29,15 @@ defmodule Web.Router do
 
     get("/auth/:provider/callback", AuthController, :callback)
 
+    get("/questions/:id", QuestionController, :show)
+
     get("/_health", PageController, :health)
   end
 
   scope "/", Web do
     pipe_through([:browser, :logged_in])
 
-    resources("/questions", QuestionController, except: [:index])
+    resources("/questions", QuestionController, except: [:index, :show])
 
     resources("/tags", TagController, only: [:show])
   end

@@ -38,12 +38,18 @@ defmodule SmartNote.Questions do
   Get a single question
   """
   def get(id) do
-    case Repo.get(Question, id) do
-      nil ->
-        {:error, :not_found}
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        case Repo.get(Question, id) do
+          nil ->
+            {:error, :not_found}
 
-      question ->
-        {:ok, question}
+          question ->
+            {:ok, question}
+        end
+
+      :error ->
+        {:error, :invalid_id}
     end
   end
 
