@@ -29,8 +29,6 @@ defmodule Web.Router do
 
     get("/auth/:provider/callback", AuthController, :callback)
 
-    get("/questions/:id", QuestionController, :show)
-
     get("/_health", PageController, :health)
   end
 
@@ -40,6 +38,12 @@ defmodule Web.Router do
     resources("/questions", QuestionController, except: [:index, :show])
 
     resources("/tags", TagController, only: [:show])
+  end
+
+  scope "/", Web do
+    pipe_through([:browser])
+
+    get("/questions/:id", QuestionController, :show)
   end
 
   if Mix.env() == :dev do
