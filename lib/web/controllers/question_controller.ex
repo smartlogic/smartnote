@@ -21,6 +21,7 @@ defmodule Web.QuestionController do
             |> assign(:open_graph_title, question.title)
             |> assign(:open_graph_description, "SmartNote is a FAQ site for SmartLogic")
             |> assign(:open_graph_url, Routes.question_path(conn, :show, question.id))
+            |> put_session(:last_path, Routes.question_path(conn, :show, question.id))
             |> render("simple.html")
         end
 

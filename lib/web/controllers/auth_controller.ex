@@ -2,6 +2,7 @@ defmodule Web.AuthController do
   use Web, :controller
 
   alias SmartNote.Users
+  alias Web.SessionController
 
   plug Ueberauth
 
@@ -11,7 +12,7 @@ defmodule Web.AuthController do
         conn
         |> put_session(:user_token, user.token)
         |> put_flash(:info, "Successfully authenticated.")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> SessionController.after_sign_in_redirect(Routes.page_path(conn, :index))
 
       {:error, :unauthorized} ->
         conn
