@@ -1,0 +1,37 @@
+<%= if !@pagination.empty? do %>
+  <nav class="pagination relative z-0 w-full justify-end flex p-4">
+    <%= if @pagination.current == 1 do %>
+      <span class="link">&laquo;</span>
+    <% else %>
+      <%= link(to: page_path(@path, 1), class: "link") do %>
+        &laquo;
+      <% end %>
+    <% end %>
+
+    <%= if more_previous?(@pagination) do %>
+      <span class="link">&hellip;</span>
+    <% end %>
+
+    <%= Enum.map(previous_pagination(@pagination), fn (page) -> %>
+      <%= link(page, to: page_path(@path, page), class: "link") %>
+    <% end) %>
+
+    <span class="active link"><%= @pagination.current %></span>
+
+    <%= Enum.map(next_pagination(@pagination), fn (page) -> %>
+      <%= link(page, to: page_path(@path, page), class: "link") %>
+    <% end) %>
+
+    <%= if more_next?(@pagination) do %>
+      <span class="link">&hellip;</span>
+    <% end %>
+
+    <%= if @pagination.current == @pagination.total do %>
+      <span class="link">&raquo;</span>
+    <% else %>
+      <%= link(to: page_path(@path, @pagination.total), class: "link") do %>
+        &raquo;
+      <% end %>
+    <% end %>
+  </nav>
+<% end %>

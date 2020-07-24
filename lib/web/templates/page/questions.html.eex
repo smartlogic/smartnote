@@ -2,4 +2,6 @@
   <p class="text-4xl">Questions</p>
 
   <%= render(QuestionView, "_questions.html", questions: @questions, conn: @conn) %>
+
+  <%= render(PaginationView, "show.html", pagination: @pagination, path: Routes.page_path(@conn, :index)) %>
 </div>

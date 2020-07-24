@@ -50,4 +50,24 @@
   @apply text-2xl;
 }
 
+nav.pagination .link {
+  @apply -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700  transition ease-in-out duration-150;
+}
+
+nav.pagination .link.active {
+  @apply z-10 outline-none border-blue-300;
+}
+
+nav.pagination .link:hover {
+  @apply text-gray-500;
+}
+
+nav.pagination .link:focus {
+  @apply z-10 outline-none border-blue-300;
+}
+
+nav.pagination .link:active {
+  @apply bg-gray-100 text-gray-700;
+}
+
 @tailwind utilities;
