@@ -4,6 +4,7 @@ defmodule SmartNote.Repo do
     adapter: Ecto.Adapters.Postgres
 
   alias SmartNote.Config
+  alias Stein.Pagination
 
   def init(_type, config) do
     vapor_config = Config.database()
@@ -15,5 +16,9 @@ defmodule SmartNote.Repo do
       )
 
     {:ok, config}
+  end
+
+  def paginate(query, opts) do
+    Pagination.paginate(__MODULE__, query, opts)
   end
 end

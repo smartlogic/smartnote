@@ -7,6 +7,8 @@ defmodule SmartNote.Users.User do
 
   import Ecto.Changeset
 
+  alias SmartNote.Notes.Note
+
   @type t :: %__MODULE__{}
 
   schema "users" do
@@ -14,6 +16,8 @@ defmodule SmartNote.Users.User do
 
     field(:username, :string)
     field(:github_uid, :string)
+
+    has_many(:notes, Note)
 
     timestamps()
   end

@@ -1,0 +1,12 @@
+<div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
+  <div class="flex w-full content-center justify-between">
+    <span class="text-4xl"><%= @note.title %></span>
+    <%= link(to: Routes.note_path(@conn, :edit, @note.id), class: "text-teal-500 font-bold my-auto") do %>
+      <i class="fa fa-edit"></i> Edit
+    <% end %>
+  </div>
+
+  <%= tags(@note) %>
+
+  <%= markdown(@note.body) %>
+</div>

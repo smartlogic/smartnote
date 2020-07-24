@@ -1,0 +1,24 @@
+<div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
+  <div class="flex items-center">
+    <p class="text-4xl flex-grow">Notes</p>
+
+    <%= link(to: Routes.note_path(@conn, :new), class: "text-teal-500 font-bold my-auto") do %>
+      <i class="fa fa-plus"></i> Add Note
+    <% end %>
+  </div>
+
+  <ul class="list-reset">
+    <%= Enum.map(@notes, fn note -> %>
+      <li class="border my-2">
+        <div class="w-full block p-4">
+          <%= link(to: Routes.note_path(@conn, :show, note.id)) do %>
+            <span class="text-xl"><%= note.title %></span>
+          <% end %>
+          <%= tags(note) %>
+        </div>
+      </li>
+    <% end) %>
+  </ul>
+
+  <%= render(PaginationView, "show.html", pagination: @pagination, path: Routes.note_path(@conn, :index)) %>
+</div>

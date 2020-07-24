@@ -35,6 +35,8 @@ defmodule Web.Router do
   scope "/", Web do
     pipe_through([:browser, :logged_in])
 
+    resources("/notes", NoteController, except: [:delete])
+
     resources("/questions", QuestionController, except: [:index, :show])
 
     resources("/tags", TagController, only: [:show])
