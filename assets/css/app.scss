@@ -46,8 +46,28 @@
   @apply mt-2;
 }
 
+.markdown ul {
+  @apply list-disc list-inside;
+}
+
+.markdown ul li {
+  @apply mt-2;
+}
+
+.markdown h1 {
+  @apply text-3xl;
+}
+
 .markdown h2 {
   @apply text-2xl;
+}
+
+.markdown h3 {
+  @apply text-xl;
+}
+
+.markdown h4 {
+  @apply text-lg;
 }
 
 nav.pagination .link {
