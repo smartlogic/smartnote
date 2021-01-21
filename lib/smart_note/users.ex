@@ -8,6 +8,13 @@ defmodule SmartNote.Users do
   alias SmartNote.Users.User
 
   @doc """
+  Preload notes onto the user data object for easy querying
+  """
+  def preload(user) do
+    Repo.preload(user, [:notes])
+  end
+
+  @doc """
   Changeset for updating a user
   """
   def edit(user), do: Ecto.Changeset.change(user, %{})
