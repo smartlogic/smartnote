@@ -34,6 +34,14 @@ defmodule SmartNote.Questions.Question do
     |> validate_libraries_format
   end
 
+  # Why is this so cursed?
+  # `libraries` is a big text field that should look for example like:
+  #     hex ecto ~> 3.0
+  #     hex foobar == 1.0
+  #     npm dataclice > 0.1
+  #
+  # So, let's just make sure we always have that format for every line
+  # here so we don't have to mess around further upstream with bad data.
   defp validate_libraries_format(struct) do
     struct
     |> validate_format(
