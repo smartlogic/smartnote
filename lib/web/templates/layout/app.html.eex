@@ -37,7 +37,7 @@
             <%= if Map.has_key?(assigns, :current_user) do %>
               <li class="mr-3">
                 <%= form_tag "/search", method: "get" do %>
-                  <%= tag(:input, type: "text", name: "search-term", placeholder: "search terms", value: Web.LayoutView.search_term(@conn)) %>
+                  <%= tag(:input, type: "text", name: "search-term", placeholder: "Search", value: Web.LayoutView.search_term(@conn), class: "input") %>
                 <% end %>
               </li>
               <li class="mr-3">
