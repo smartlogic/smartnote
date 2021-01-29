@@ -21,8 +21,8 @@ defmodule Web.PageController do
     end
   end
 
-  def search(conn, %{"search-term" => search_term} = _params) do
-    search_term = String.strip(search_term)
+  def search(conn, %{"search-term" => search_term}) do
+    search_term = String.trim(search_term)
 
     case String.length(search_term) > 0 do
       true ->
