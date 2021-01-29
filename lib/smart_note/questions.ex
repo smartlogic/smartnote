@@ -16,7 +16,32 @@ defmodule SmartNote.Questions do
   Get all questions, paginated
   """
   def all(opts \\ []) do
-    Repo.paginate(Question, opts)
+    if is_nil(opts[:search_term]) do
+      Repo.paginate(Question, opts)
+    else
+      search(opts[:search_term])
+      |> Repo.paginate(opts)
+    end
+  end
+
+  # do a naive lookup on all question fields to see if we
+  # have any matches
+  defp search("") do
+    Question
+  end
+
+  defp search(search_term) do
+    search_term_matcher = "%#{search_term}%"
+
+    Question
+    |> where(
+      [q],
+      ilike(q.title, ^search_term_matcher) or
+        ilike(q.body, ^search_term_matcher) or
+        ilike(q.answer, ^search_term_matcher) or
+        ilike(q.libraries, ^search_term_matcher) or
+        fragment("? = ANY(?)", ^search_term, q.tags)
+    )
   end
 
   @doc """

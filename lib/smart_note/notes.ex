@@ -11,6 +11,13 @@ defmodule SmartNote.Notes do
   alias SmartNote.Repo
 
   @doc """
+  Preload creating user onto the note data object for easy querying
+  """
+  def preload(note) do
+    Repo.preload(note, [:user])
+  end
+
+  @doc """
   Changeset for a new note
   """
   def new(user) do

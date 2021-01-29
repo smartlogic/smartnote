@@ -36,6 +36,11 @@
           <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
             <%= if Map.has_key?(assigns, :current_user) do %>
               <li class="mr-3">
+                <%= form_tag "/search", method: "get" do %>
+                  <%= tag(:input, type: "text", name: "search-term", placeholder: "search terms", value: Web.LayoutView.search_term(@conn)) %>
+                <% end %>
+              </li>
+              <li class="mr-3">
                 <%= link(to: Routes.question_path(@conn, :new), class: "inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4") do %>
                   <i class="fa fa-plus"></i> Question
                 <% end %>

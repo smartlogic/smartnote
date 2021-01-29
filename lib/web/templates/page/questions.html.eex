@@ -1,5 +1,5 @@
 <div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
-  <p class="text-4xl">Questions</p>
+  <h2 class="text-4xl"><%= Web.LayoutView.question_header_text(@conn) %></h2>
 
   <%= render(QuestionView, "_questions.html", questions: @questions, conn: @conn) %>
 

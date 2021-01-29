@@ -38,3 +38,6 @@ npm-debug.log
 
 /.env.dev
 /kubernetes/*-config.yml
+
+# Ignore the output of mix ecto.dump
+/priv/repo/structure.sql

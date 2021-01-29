@@ -9,4 +9,7 @@
       </div>
     </li>
   <% end) %>
+  <%=  if Enum.empty?(@questions) do %>
+    <li class="border my-2">No Questions Found</li>
+  <% end %>
 </ul>
