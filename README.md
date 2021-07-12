@@ -6,10 +6,13 @@ SmartNote is an app to track internal documentation, starting with FAQs around d
 
 First install these:
 
-- [asdf](https://asdf-vm.com/#/)
+- [asdf](https://asdf-vm.com/#/), which installs…
+  - [elixir](https://elixir-lang.org/install.html)
+  - [erlang](https://www.erlang.org/downloads)
+  - [nodejs](https://nodejs.org/en/download/)
 - [PostgreSQL 12](https://www.postgresql.org/)
 
-Once those are installed you can setup the application.
+Once those are installed you can setup the application. Check [`.tool-versions`](.tool-versions) for needed versions if installing manually.
 
 ```bash
 # This installs elixir/erlang/nodejs at the versions required
