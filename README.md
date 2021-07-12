@@ -13,6 +13,8 @@ Once those are installed you can setup the application.
 
 ```bash
 # This installs elixir/erlang/nodejs at the versions required
+asdf plugin add elixir
+asdf plugin add nodejs
 asdf install
 
 # Install elixir dependencies
