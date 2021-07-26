@@ -54,6 +54,17 @@ defmodule SmartNote.Questions do
   end
 
   @doc """
+    Get all unique tags
+    """
+    def all_tags() do
+      Question
+      |> select([q], q.tags)
+      |> Repo.all()
+      |> Enum.flat_map(fn tag_list -> tag_list end)
+      |> Enum.uniq()
+    end
+
+  @doc """
   Get a single question
   """
   def get(id) do

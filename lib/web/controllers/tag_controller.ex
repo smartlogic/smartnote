@@ -15,8 +15,11 @@ defmodule Web.TagController do
   end
 
   def index(conn,_) do
+    tags = Questions.all_tags
+    IO.inspect(tags, label: "TAGS")
 
     conn
+    |> assign(:tags, tags)
     |> render("index.html")
   end
 
