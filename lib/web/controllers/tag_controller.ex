@@ -16,7 +16,6 @@ defmodule Web.TagController do
 
   def index(conn,_) do
     tags = Questions.all_tags
-    IO.inspect(tags, label: "TAGS")
 
     conn
     |> assign(:tags, tags)

@@ -14,11 +14,3 @@
     </li>
   <% end) %>
 </ul>
-
-
-
-
-
-
-<!-- //Question |> select([q], q.tags) |> Repo.all |> List.flatten|>Enum.map(&String.downcase/1) |> Enum.uniq |> Enum.sort
--->
