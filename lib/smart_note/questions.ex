@@ -62,6 +62,8 @@ defmodule SmartNote.Questions do
       |> Repo.all()
       |> Enum.flat_map(fn tag_list -> tag_list end)
       |> Enum.uniq()
+      |> Enum.filter(fn x -> x != "" end)
+      |> Enum.sort()
     end
 
   @doc """
@@ -91,6 +93,7 @@ defmodule SmartNote.Questions do
       tags
       |> String.split(",")
       |> Enum.map(&String.trim/1)
+      |> Enum.map(&String.downcase/1)
 
     create(Map.merge(params, %{"tags" => tags}))
   end
@@ -109,6 +112,7 @@ defmodule SmartNote.Questions do
       tags
       |> String.split(",")
       |> Enum.map(&String.trim/1)
+      |> Enum.map(&String.downcase/1)
 
     update(question, Map.merge(params, %{"tags" => tags}))
   end
