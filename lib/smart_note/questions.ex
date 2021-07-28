@@ -64,6 +64,19 @@ defmodule SmartNote.Questions do
       |> Enum.uniq()
       |> Enum.filter(fn x -> x != "" end)
       |> Enum.sort()
+      |> Enum.map(fn x -> count = get_tag_count(x)
+        %{tag: x, tag_count: count}
+      end)
+    end
+
+@doc """
+  returns number of questions with a tag
+"""
+    def get_tag_count(tag) do
+      Question
+      |> where([q], fragment("? = ANY(?)", ^tag, q.tags))
+      |> Repo.all()
+      |> Enum.count()
     end
 
   @doc """
