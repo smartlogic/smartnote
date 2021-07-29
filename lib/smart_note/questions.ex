@@ -54,30 +54,19 @@ defmodule SmartNote.Questions do
   end
 
   @doc """
-    Get all unique tags
-    """
-    def all_tags() do
-      Question
-      |> select([q], q.tags)
-      |> Repo.all()
-      |> Enum.flat_map(fn tag_list -> tag_list end)
-      |> Enum.uniq()
-      |> Enum.filter(fn x -> x != "" end)
-      |> Enum.sort()
-      |> Enum.map(fn x -> count = get_tag_count(x)
-        %{tag: x, tag_count: count}
-      end)
-    end
-
-@doc """
-  returns number of questions with a tag
-"""
-    def get_tag_count(tag) do
-      Question
-      |> where([q], fragment("? = ANY(?)", ^tag, q.tags))
-      |> Repo.all()
-      |> Enum.count()
-    end
+  Get all unique tags
+  """
+  def all_tags() do
+    Question
+    |> select([q], q.tags)
+    |> Repo.all()
+    |> Enum.flat_map(fn tag_list -> tag_list end)
+    |> Enum.filter(fn x -> x != "" end)
+    |> Enum.sort()
+    |> Enum.reduce(%{}, fn tag, tag_counts ->
+      Map.update(tag_counts, tag, 1, fn count -> count + 1 end)
+    end)
+  end
 
   @doc """
   Get a single question
