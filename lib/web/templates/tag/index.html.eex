@@ -1,0 +1,17 @@
+<div class="bg-white shadow-md rounded p-8 mx-4 sm:mx-0">
+  <div class="flex items-center">
+    <p class="text-4xl flex-grow text-center bg-teal-500 font-extrabold"style="font-size:40px; color:white;">Tags</p>
+  </div
+</div>
+<ul class="list-reset">
+  <%= Enum.map(@tags, fn {tag,count} -> %>
+  <%= link(to: Routes.tag_path(@conn, :show, tag)) do %>
+    <li class="border my-2 hover:bg-teal-400" >
+      <div class="w-full block p-6">
+          <span class="text-xl font-medium capitalize" style="font-size:25px;"><%= tag %></span>
+          <span class="text-l ml-16">Count: <%= count %></span>
+      </div>
+    </li>
+  <% end %>
+  <% end) %>
+</ul>

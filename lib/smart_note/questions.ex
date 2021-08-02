@@ -54,6 +54,21 @@ defmodule SmartNote.Questions do
   end
 
   @doc """
+  Get all unique tags
+  """
+  def all_tags() do
+    Question
+    |> select([q], q.tags)
+    |> Repo.all()
+    |> Enum.flat_map(fn tag_list -> tag_list end)
+    |> Enum.filter(fn x -> x != "" end)
+    |> Enum.sort()
+    |> Enum.reduce(%{}, fn tag, tag_counts ->
+      Map.update(tag_counts, tag, 1, fn count -> count + 1 end)
+    end)
+  end
+
+  @doc """
   Get a single question
   """
   def get(id) do
@@ -80,6 +95,7 @@ defmodule SmartNote.Questions do
       tags
       |> String.split(",")
       |> Enum.map(&String.trim/1)
+      |> Enum.map(&String.downcase/1)
 
     create(Map.merge(params, %{"tags" => tags}))
   end
@@ -98,6 +114,7 @@ defmodule SmartNote.Questions do
       tags
       |> String.split(",")
       |> Enum.map(&String.trim/1)
+      |> Enum.map(&String.downcase/1)
 
     update(question, Map.merge(params, %{"tags" => tags}))
   end
