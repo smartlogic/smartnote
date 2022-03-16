@@ -11,6 +11,7 @@ defmodule SmartNote.Application do
     load_config()
 
     children = [
+      {Phoenix.PubSub, name: SmartNote.PubSub},
       SmartNote.Config.Cache,
       {Finch, name: SmartNote.HTTPClient},
       SmartNote.Repo,

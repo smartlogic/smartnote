@@ -16,7 +16,7 @@ config :smart_note, :github, callback_module: GitHub.Implementation
 # Configures the endpoint
 config :smart_note, Web.Endpoint,
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SmartNote.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: SmartNote.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
