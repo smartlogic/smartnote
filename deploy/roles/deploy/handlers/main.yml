@@ -1,0 +1,4 @@
+---
+- name: restart smart_note
+  command: systemctl restart smart_note
+  become: true

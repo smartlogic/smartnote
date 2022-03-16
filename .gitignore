@@ -41,3 +41,9 @@ npm-debug.log
 
 # Ignore the output of mix ecto.dump
 /priv/repo/structure.sql
+
+# Deployment
+/.vagrant/
+/deploy/collections/
+/deploy/galaxy-roles/
+/deploy/tmp/

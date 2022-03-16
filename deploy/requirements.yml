@@ -1,0 +1,24 @@
+---
+roles:
+  - src: jnv.unattended-upgrades
+    version: v1.10.0
+  - src: geerlingguy.ntp
+    version: 2.2.0
+  - src: geerlingguy.postgresql
+    version: 3.1.0
+  - src: smartlogic.github_keys
+    version: 1.0.0
+  - src: https://github.com/smartlogic/ansible-role-traefik
+    name: traefik
+    version: 1.0.0
+  - src: https://github.com/smartlogic/ansible-role-firewall
+    name: firewall
+    version: 0.1.2
+  - src: https://github.com/smartlogic/ansible-role-prometheus-exporters
+    name: prometheus-exporters
+    version: 0.5.3
+
+collections:
+  - name: devsec.hardening
+    version: 7.5.0
+    source: https://galaxy.ansible.com

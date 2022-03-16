@@ -1,0 +1,18 @@
+[Unit]
+Description=SmartNote Elixir Application
+After=network.target
+
+[Service]
+User=deploy
+Group=deploy
+WorkingDirectory=/home/deploy/apps/smart_note/current
+Environment=LANG=en_US.UTF-8
+EnvironmentFile=/etc/smart_note.env
+ExecStart=/home/deploy/apps/smart_note/current/bin/smart_note start
+SyslogIdentifier=smart_note
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
