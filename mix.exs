@@ -33,8 +33,6 @@ defmodule SmartNote.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bamboo, "~> 2.0"},
-      {:bamboo_phoenix, "~> 1.0"},
       {:credo, "~> 1.1", only: [:dev, :test]},
       {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},

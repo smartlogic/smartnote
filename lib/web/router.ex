@@ -49,8 +49,4 @@ defmodule Web.Router do
 
     get("/questions/:id", QuestionController, :show)
   end
-
-  if Mix.env() == :dev do
-    forward("/emails/sent", Bamboo.SentEmailViewerPlug)
-  end
 end

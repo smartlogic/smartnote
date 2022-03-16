@@ -1,6 +1,5 @@
 defmodule SmartNote.UsersTest do
   use SmartNote.DataCase
-  use Bamboo.Test
 
   alias SmartNote.Users
 

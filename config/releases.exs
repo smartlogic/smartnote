@@ -8,14 +8,6 @@ config :smart_note, Web.Endpoint,
 
 config :smart_note, :github, callback_module: GitHub.Implementation
 
-config :smart_note, SmartNote.Mailer,
-  adapter: Bamboo.MailgunAdapter,
-  api_key: {:system, "MAILGUN_API_KEY"},
-  domain: {:system, "MAILGUN_DOMAIN"},
-  hackney_opts: [
-    recv_timeout: :timer.minutes(1)
-  ]
-
 config :logger, level: :info
 
 config :phoenix, :logger, false
