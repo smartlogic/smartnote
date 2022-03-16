@@ -35,7 +35,9 @@
   become: yes
   notify: reload systemd
 
+# This is edited on the server now, let's not re-template
 - name: copy config file
+  when: release_env == "local"
   copy:
     src: "{{ vapor_file }}"
     dest: /etc/smart_note.env
