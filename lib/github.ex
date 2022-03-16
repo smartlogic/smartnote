@@ -3,7 +3,7 @@ defmodule GitHub do
   Fetch information from GitHub
   """
 
-  @callback_module Application.get_env(:smart_note, :github)[:callback_module]
+  @callback_module Application.compile_env(:smart_note, :github)[:callback_module]
 
   def organizations(user) do
     @callback_module.organizations(user)

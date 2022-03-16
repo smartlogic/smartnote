@@ -33,11 +33,12 @@ defmodule SmartNote.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bamboo, "~> 1.3"},
+      {:bamboo, "~> 2.0"},
+      {:bamboo_phoenix, "~> 1.0"},
       {:credo, "~> 1.1", only: [:dev, :test]},
       {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},
-      {:finch, "~> 0.2.0"},
+      {:finch, "~> 0.10"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:logster, "~> 1.0"},
@@ -49,9 +50,9 @@ defmodule SmartNote.MixProject do
       {:plug_cowboy, "~> 2.1"},
       {:postgrex, ">= 0.0.0"},
       {:stein, "~> 0.5"},
-      {:ueberauth, "~> 0.6.3"},
-      {:ueberauth_github, "~> 0.7"},
-      {:vapor, "~> 0.8.0"}
+      {:ueberauth, "~> 0.7"},
+      {:ueberauth_github, "~> 0.8"},
+      {:vapor, "~> 0.10"}
     ]
   end
 
