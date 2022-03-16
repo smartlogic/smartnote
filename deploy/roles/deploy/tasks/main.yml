@@ -83,6 +83,7 @@
 
 - name: finalize sentry release
   when: release_env == "production"
+  when: sentry_organization_slug is defined
   ansible.builtin.uri:
     url: "https://sentry.io/api/0/organizations/{{ sentry_organization_slug }}/releases/{{ deploy_revision['content'] | b64decode | trim }}/"
     method: PUT

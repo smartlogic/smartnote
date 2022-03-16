@@ -18,6 +18,7 @@
   gather_facts: yes
   hosts:
     - local
+    - production
   roles:
     - { role: setup, action: "basics", tags: ["setup"] }
 
@@ -25,8 +26,9 @@
   gather_facts: yes
   hosts:
     - local
+    - production
   roles:
-    - { role: geerlingguy.postgresql, become: yes, tags: ["postgres"] }
+    #    - { role: geerlingguy.postgresql, become: yes, tags: ["postgres"] }
     - { role: traefik, tags: ["web"] }
 
 # Anything specific to production servers, cloud-sql for instance

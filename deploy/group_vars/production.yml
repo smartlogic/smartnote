@@ -1,0 +1,18 @@
+---
+
+release_env: production
+
+vapor_file: "{{ playbook_dir }}/files/smart_note.local.env"
+
+firewall_ports:
+  - rule: allow
+    port: http
+  - rule: allow
+    port: https
+  - rule: allow
+    port: ssh
+
+traefik_config: "{{ playbook_dir }}/files/traefik-production.toml"
+traefik_config_files:
+  - "{{ playbook_dir }}/files/traefik-production-phoenix.toml"
+  - "{{ playbook_dir }}/files/traefik-production-ssl.toml"

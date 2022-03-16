@@ -1,0 +1,16 @@
+[http.routers]
+  [http.routers.phoenix]
+    rule = "Host(`smartnote.dev`)"
+    service = "phoenix"
+    entrypoints = ["websecure"]
+    middlewares = []
+    [http.routers.phoenix.tls]
+      certResolver = "le"
+      [[http.routers.phoenix.tls.domains]]
+      main = "smartnote.dev"
+
+
+[http.services]
+  [http.services.phoenix.loadBalancer]
+    [[http.services.phoenix.loadBalancer.servers]]
+      url = "http://127.0.0.1:4000"

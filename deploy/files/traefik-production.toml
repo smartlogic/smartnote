@@ -1,0 +1,39 @@
+[global]
+  checkNewVersion = false
+  sendAnonymousUsage = false
+
+[log]
+  level = "INFO"
+
+[providers]
+  [providers.file]
+    directory = "/opt/traefik/config"
+    watch = true
+
+[api]
+  dashboard = true
+  insecure = true
+
+[certificatesResolvers.le.acme]
+  email = "dev@smartlogic.io"
+  storage = "acme.json"
+  [certificatesResolvers.le.acme.tlschallenge]
+
+[entryPoints]
+  [entryPoints.metrics]
+    address = ":8888"
+
+  [entryPoints.web]
+    address = ":80"
+    [entryPoints.web.http]
+      [entryPoints.web.http.redirections]
+        [entryPoints.web.http.redirections.entryPoint]
+          to = "websecure"
+          scheme = "https"
+
+  [entryPoints.websecure]
+    address = ":443"
+
+[metrics]
+  [metrics.prometheus]
+    entryPoint = "metrics"
