@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.11.2-erlang-23.1-alpine-3.12.0 as builder
+FROM hexpm/elixir:1.12.2-erlang-24.0.5-alpine-3.15.0 as builder
 
 RUN apk add --no-cache gcc git make musl-dev
 RUN mix local.rebar --force && mix local.hex --force
@@ -22,7 +22,7 @@ COPY --from=frontend /priv/static /app/priv/static
 COPY . /app/
 RUN mix phx.digest && mix release
 
-FROM alpine:3.12
+FROM alpine:3.15
 ENV LANG=C.UTF-8
 RUN apk add --no-cache -U bash openssl
 WORKDIR /app
