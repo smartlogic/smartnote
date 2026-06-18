@@ -60,3 +60,7 @@ To migrate on kubernetes, find a pod and exec into it and run this:
 ```bash
 smart_note eval "SmartNote.ReleaseTasks.Migrate.run()"
 ```
+
+## Deployment
+
+DNS is for notes.smartlogic.io, which is set in Cloudflare. The machine is running in digitalocean.
